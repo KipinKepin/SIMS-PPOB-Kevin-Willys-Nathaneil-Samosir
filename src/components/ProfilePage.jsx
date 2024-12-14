@@ -78,20 +78,15 @@ const ProfilePage = () => {
     dispatch(updateProfile(updatedProfile))
       .unwrap()
       .then(() => {
-        setResultModal({ open: true, success: true });
         setIsEditing(false);
       })
       .catch(() => setResultModal({ open: true, success: false }));
   };
 
   const handleLogout = () => {
-    setConfirmModal(true);
-  };
-
-  const confirmLogout = () => {
     dispatch(logout());
-    setConfirmModal(false);
   };
+  console.log(previewImage);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {message}</div>;
@@ -102,12 +97,23 @@ const ProfilePage = () => {
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="text-center">
           <div className="relative inline-block">
-            <img
-              src={previewImage}
-              alt="Profile"
-              className="w-32 h-32 object-cover rounded-full mx-auto cursor-pointer"
-              onClick={() => document.getElementById("fileInput").click()}
-            />
+            {previewImage ==
+            "https://minio.nutech-integrasi.com/take-home-test/null" ? (
+              <img
+                src="https://yourteachingmentor.com/wp-content/uploads/2020/12/istockphoto-1223671392-612x612-1.jpg"
+                alt="Profile"
+                className="w-32 h-32 object-cover rounded-full mx-auto cursor-pointer"
+                onClick={() => document.getElementById("fileInput").click()}
+                style={{ border: "1px solid" }}
+              />
+            ) : (
+              <img
+                src={previewImage}
+                alt="Profile"
+                className="w-32 h-32 object-cover rounded-full mx-auto cursor-pointer"
+                onClick={() => document.getElementById("fileInput").click()}
+              />
+            )}
             {isEditing && (
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <input
@@ -178,7 +184,7 @@ const ProfilePage = () => {
 
           {isEditing && (
             <button
-              type="submit"
+              onClick={() => setConfirmModal(true)}
               className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600"
             >
               Save Profile
@@ -202,31 +208,6 @@ const ProfilePage = () => {
         </button>
       </div>
 
-      {/* Confirmation Modal */}
-      {confirmModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-80">
-            <h2 className="text-lg font-semibold text-center">
-              Konfirmasi Logout
-            </h2>
-            <p className="text-center mt-2">Apakah Anda yakin ingin logout?</p>
-            <div className="flex justify-between mt-4">
-              <button
-                className="bg-gray-300 text-black py-2 px-4 rounded-lg"
-                onClick={() => setConfirmModal(false)}
-              >
-                Batalkan
-              </button>
-              <button
-                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
-                onClick={confirmLogout}
-              >
-                Iya
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       {resultModal.open && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg w-80 text-center">
@@ -253,6 +234,33 @@ const ProfilePage = () => {
             >
               Tutup
             </button>
+          </div>
+        </div>
+      )}
+      {confirmModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg w-80">
+            <h2 className="text-lg font-semibold text-center">
+              Konfirmasi Perubahan
+            </h2>
+            <p className="text-center mt-2">Simpan perubahan?</p>
+            <div className="flex justify-between mt-4">
+              <button
+                className="bg-gray-300 text-black py-2 px-4 rounded-lg"
+                onClick={() => setConfirmModal(false)}
+              >
+                Batalkan
+              </button>
+              <button
+                className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+                onClick={() => {
+                  setConfirmModal(false);
+                  setResultModal({ open: true, success: true });
+                }}
+              >
+                Iya
+              </button>
+            </div>
           </div>
         </div>
       )}

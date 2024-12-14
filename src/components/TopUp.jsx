@@ -56,7 +56,7 @@ const TopUp = () => {
   return (
     <div className="bg-white min-h-screen font-sans">
       <Navbar />
-      <div className="px-8 py-6">
+      <div className="container mx-auto px-8 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
           <div className="col-span-1">
             <Profile />
@@ -71,7 +71,7 @@ const TopUp = () => {
           <p className="text-lg">Silahkan Masukkan</p>
           <h1 className="text-2xl font-bold">Nominal Top Up</h1>
         </div>
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
           <form
             className="flex flex-col gap-4 md:col-span-2"
             onSubmit={(e) => {
@@ -151,14 +151,14 @@ const TopUp = () => {
         )}
         {emptyAmount ? (
           <div className="mt-6 lg:mt-1 text-orange-500">
-            <p>*Tidak dapat melakukan topup jika:</p>
+            <p>*Tidak dapat melakukan topup jika nominal:</p>
             <ol>
               <li>1. Kurang dari Rp. 10.000</li>
               <li>2. Lebih dari Rp. 1.000.000</li>
             </ol>
           </div>
         ) : (
-          <p>hai</p>
+          ""
         )}
         {/* Result Modal */}
         {resultModal.open && (

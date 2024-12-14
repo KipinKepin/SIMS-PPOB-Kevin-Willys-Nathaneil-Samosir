@@ -14,7 +14,7 @@ const Services = () => {
   console.log(services);
 
   return (
-    <div className="flex flex-wrap gap-4 w-full justify-evenly lg:justify-between">
+    <div className="flex gap-4 w-full justify-evenly lg:justify-between items-center text-center">
       {services && services.length > 0 ? (
         services.map((service, index) => (
           <Link

@@ -9,9 +9,9 @@ const Homepage = () => {
   return (
     <div className="bg-white min-h-screen font-sans">
       <Navbar />
-      <div className="px-8 py-6">
+      <div className="container mx-auto px-8 py-6">
         {/* Profile and Balance Section */}
-        <div className="grid grid-cols-3 gap-6 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
           <div className="col-span-1">
             <Profile />
           </div>

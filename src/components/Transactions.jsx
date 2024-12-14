@@ -15,7 +15,7 @@ const Transactions = () => {
 
   useEffect(() => {
     if (transactions.records.length === 0) {
-      dispatch(fetchTransactions()); // Jangan reset offset lagi jika sudah pernah dilakukan
+      dispatch(fetchTransactions());
     }
   }, [dispatch, transactions.records.length]);
 
@@ -40,9 +40,8 @@ const Transactions = () => {
   return (
     <div className="bg-white min-h-screen font-sans">
       <Navbar />
-
-      <div className="px-8 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+      <div className="container mx-auto px-8 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
           <div className="col-span-1">
             <Profile />
           </div>
@@ -52,12 +51,11 @@ const Transactions = () => {
             </div>
           </div>
         </div>
-
         <div className="mt-6">
           <h1 className="text-2xl font-bold">Semua Transaksi</h1>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-6">
           {isLoading ? (
             <p>Loading...</p>
           ) : isError ? (
