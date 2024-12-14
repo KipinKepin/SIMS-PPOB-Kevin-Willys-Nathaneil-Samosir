@@ -10,7 +10,6 @@ const Homepage = () => {
     <div className="bg-white min-h-screen font-sans">
       <Navbar />
       <div className="container mx-auto px-8 py-6">
-        {/* Profile and Balance Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
           <div className="col-span-1">
             <Profile />
@@ -22,13 +21,13 @@ const Homepage = () => {
           </div>
         </div>
 
-        {/* Services Section */}
+        {/* Services */}
         <div className="mt-8">
           <h2 className="text-xl font-semibold mb-4">Layanan</h2>
           <Services />
         </div>
 
-        {/* Banner Section */}
+        {/* Banner */}
         <div className="mt-8">
           <h2 className="text-xl font-semibold mb-4">Temukan Promo Menarik</h2>
           <Banner />

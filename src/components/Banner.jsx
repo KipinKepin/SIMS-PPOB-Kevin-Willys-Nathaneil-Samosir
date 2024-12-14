@@ -14,7 +14,7 @@ const Banner = () => {
 
   return (
     <div className="w-full">
-      {/* Wrapper untuk scroll di mobile, memenuhi lebar di desktop */}
+      {/* scroll dalam tampilan mobile */}
       <div className="flex gap-4 overflow-x-auto lg:overflow-x-hidden justify-between">
         {banner && banner.length > 0 ? (
           banner.map((item, idx) => (

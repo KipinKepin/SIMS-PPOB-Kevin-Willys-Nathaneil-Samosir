@@ -5,7 +5,6 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="navbar container mx-auto flex items-center justify-between py-4 px-6">
-        {/* Logo Section */}
         <div className="flex items-center gap-3">
           <img
             src="/assets/logo.png"
@@ -20,7 +19,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Menu Section */}
         <ul className="flex items-center gap-6 text-gray-700">
           <li>
             <Link

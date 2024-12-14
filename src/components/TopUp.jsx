@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import { useDispatch } from "react-redux";
 import { topUpBalance } from "../features/topUpSlice";
 import { fetchBalance } from "../features/balanceSlice";
+import { CreditCardIcon } from "@heroicons/react/24/outline";
 
 const TopUp = () => {
   const [amount, setAmount] = useState(0);
@@ -17,6 +18,7 @@ const TopUp = () => {
   const [emptyAmount, setEmptyAmount] = useState(true);
   const dispatch = useDispatch();
 
+  // validasi jika nominal <=10000 dan >=1000000
   const validateAmount = (value) => {
     const num = Number(value);
     if (num >= 10000 && num <= 1000000) {
@@ -79,15 +81,17 @@ const TopUp = () => {
               if (isValid) setConfirmModal(true);
             }}
           >
-            <label className="input input-bordered flex items-center gap-2 w-full">
+            <div className="flex items-center border border-gray-300 rounded-md">
+              <CreditCardIcon className="h-6 w-6 ml-3 text-gray-500 mr-3" />
               <input
-                type="number"
-                className="grow border rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
                 placeholder="masukkan nominal Top Up"
-                value={amount}
+                value={amount.toLocaleString()}
                 onChange={handleAmountChange}
+                className="input w-full border-0 focus:ring-0 rounded-md"
               />
-            </label>
+            </div>
+
             <button
               className={`py-2 px-4 rounded-lg w-full md:w-auto ${
                 isValid
@@ -101,7 +105,7 @@ const TopUp = () => {
             </button>
           </form>
 
-          {/* Quick Select buttons */}
+          {/* jenis nominal */}
           <div className="grid grid-cols-3 gap-4 md:col-span-1">
             {quickSelectValues.map((value) => (
               <button
@@ -118,7 +122,7 @@ const TopUp = () => {
             ))}
           </div>
         </div>
-        {/* Confirmation Modal */}
+        {/* popup */}
         {confirmModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg w-80">
@@ -149,6 +153,7 @@ const TopUp = () => {
             </div>
           </div>
         )}
+        {/* tampilkan keterangan topup */}
         {emptyAmount ? (
           <div className="mt-6 lg:mt-1 text-orange-500">
             <p>*Tidak dapat melakukan topup jika nominal:</p>
@@ -160,7 +165,7 @@ const TopUp = () => {
         ) : (
           ""
         )}
-        {/* Result Modal */}
+        {/* popup */}
         {resultModal.open && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white p-6 rounded-lg w-80 text-center">

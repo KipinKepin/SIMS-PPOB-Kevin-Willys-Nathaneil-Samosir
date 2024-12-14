@@ -10,6 +10,7 @@ import {
   createTransaction,
   fetchTransactions,
 } from "../features/transactionSlice";
+import { CreditCardIcon } from "@heroicons/react/24/outline";
 
 const ServicePayment = () => {
   const [confirmModal, setConfirmModal] = useState(false);
@@ -102,6 +103,7 @@ const ServicePayment = () => {
             </div>
           </div>
         </div>
+        {/* jenis service */}
         <div className="mt-6 flex flex-col gap-4">
           <h1 className="text-2xl font-semibold">Pembayaran</h1>
           <div className="flex gap-4 items-center">
@@ -112,13 +114,17 @@ const ServicePayment = () => {
             />
             <h1 className="font-bold">{service.service_name}</h1>
           </div>
+          {/* nominal */}
           <div>
-            <input
-              type="text"
-              value={service.service_tariff.toLocaleString()}
-              disabled
-              className="w-full border rounded-lg px-4 py-2 bg-gray-100 cursor-not-allowed"
-            />
+            <div className="flex items-center border border-gray-300 rounded-md">
+              <CreditCardIcon className="h-6 w-6 ml-3 text-gray-500 mr-3" />
+              <input
+                type="text"
+                value={service.service_tariff.toLocaleString()}
+                disabled
+                className="input w-full border-0 focus:ring-0 rounded-md"
+              />
+            </div>
           </div>
           <div>
             <button
@@ -130,6 +136,7 @@ const ServicePayment = () => {
           </div>
         </div>
       </div>
+      {/* popup */}
       {confirmModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg w-80">
@@ -160,6 +167,7 @@ const ServicePayment = () => {
           </div>
         </div>
       )}
+      {/* popup */}
       {resultModal.open && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg w-80 text-center">

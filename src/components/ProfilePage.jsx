@@ -96,6 +96,7 @@ const ProfilePage = () => {
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 py-8">
         <div className="text-center">
+          {/* jika gambar tidak ada, ganti dengan gambar default sendiri */}
           <div className="relative inline-block">
             {previewImage ==
             "https://minio.nutech-integrasi.com/take-home-test/null" ? (
@@ -208,6 +209,7 @@ const ProfilePage = () => {
         </button>
       </div>
 
+      {/* popup */}
       {resultModal.open && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg w-80 text-center">
@@ -237,6 +239,7 @@ const ProfilePage = () => {
           </div>
         </div>
       )}
+      {/* popup */}
       {confirmModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-6 rounded-lg w-80">

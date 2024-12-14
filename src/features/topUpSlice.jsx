@@ -19,16 +19,16 @@ export const topUpBalance = createAsyncThunk(
       const response = await axios.post(
         `${baseUrl}/topup`,
         {
-          top_up_amount: topUpAmount, // Sesuai dengan dokumentasi
+          top_up_amount: topUpAmount,
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Bearer token wajib
+            Authorization: `Bearer ${token}`,
           },
         }
       );
 
-      return response.data; // Mengembalikan data respons ke Redux
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }

@@ -17,14 +17,14 @@ export const fetchTransactions = createAsyncThunk(
   "transactions/fetchTransactions",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const { offset, limit } = state.transactions; // Ambil offset & limit dari state Redux
+    const { offset, limit } = state.transactions;
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const response = await axios.get(`${baseUrl}/transaction/history`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        params: { offset, limit }, // Gunakan offset dan limit yang benar
+        params: { offset, limit },
       });
       return response.data.data;
     } catch (error) {
@@ -67,11 +67,11 @@ const transactionSlice = createSlice({
   initialState,
   reducers: {
     incrementOffset(state) {
-      state.offset += state.limit; // Update offset setiap kali load more
+      state.offset += state.limit;
     },
     resetOffset(state) {
-      state.offset = 0; // Reset offset
-      state.transactions.records = []; // Kosongkan data transaksi
+      state.offset = 0;
+      state.transactions.records = [];
     },
   },
   extraReducers: (builder) => {

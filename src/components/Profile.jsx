@@ -14,6 +14,7 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col items-center lg:items-start space-y-4">
+      {/* gambar */}
       <div className="avatar">
         <div className="w-16 rounded-full ring ring-primary ring-offset-base-100">
           {profile.profile_image ==
@@ -29,6 +30,7 @@ const Profile = () => {
           )}
         </div>
       </div>
+      {/* tulisan */}
       <div>
         <h1 className="text-md lg:text-xl text-center lg:text-left text-gray-600">
           Selamat Datang,

@@ -14,20 +14,22 @@ const Services = () => {
   console.log(services);
 
   return (
-    <div className="flex gap-4 w-full justify-evenly lg:justify-between items-center text-center">
+    <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 w-full lg:flex lg:justify-between">
       {services && services.length > 0 ? (
         services.map((service, index) => (
           <Link
             to={`/${service.service_code}`}
             key={index}
-            className="flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow hover:bg-gray-200 w-full sm:w-1/2 lg:w-auto"
+            className="flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow hover:bg-gray-200 transition w-full sm:w-auto"
           >
             <img
               src={service.service_icon}
               alt={service.service_name}
               className="w-12 h-12 mb-2"
             />
-            <p className="text-sm font-medium">{service.service_name}</p>
+            <p className="text-sm font-medium text-center">
+              {service.service_name}
+            </p>
           </Link>
         ))
       ) : (
