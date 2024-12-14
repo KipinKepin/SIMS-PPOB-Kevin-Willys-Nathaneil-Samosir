@@ -19,7 +19,7 @@ const Balance = () => {
     <div
       className="text-left"
       style={{
-        background: "url(../../public/assets/balance_bg.png)",
+        background: "url(/assets/balance_bg.png)",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         padding: "25px",

@@ -41,7 +41,7 @@ const Login = () => {
       <div className="w-full lg:w-1/2 flex items-center justify-center bg-white h-screen">
         <div className="w-full max-w-md p-8 space-y-6">
           <div className="text-center flex items-center justify-center gap-2">
-            <img src="../../public/assets/logo.png" alt="Logo" />
+            <img src="/assets/logo.png" alt="Logo" />
             <h1 className="font-bold text-lg">SIMS PPOB</h1>
           </div>
           <h1 className="text-xl lg:text-3xl font-bold text-center text-gray-800">
@@ -138,7 +138,7 @@ const Login = () => {
         style={{ backgroundColor: "#FDE2E2" }}
       >
         <img
-          src="../../public/assets/login-register-bg.png"
+          src="/assets/login-register-bg.png"
           alt="Login Illustration"
           className="w-full h-screen object-cover"
         />
